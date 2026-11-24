@@ -19,7 +19,7 @@ Search:
   a two-slot history table for move ordering.
 - Quiescence search on captures and promotions so the leaf evaluation is
   not fooled by a hanging piece.
-- A per-move node budget of 100,000 nodes, raised from 80,000 for the final;
+- A per-move node budget of 120,000 nodes, raised from 100,000 for the final;
   the budget, not the clock, is the binding limit, and a move finishes in
   about two seconds on the practice gauntlet.
 
@@ -47,11 +47,11 @@ python3 main.py
 ## Results
 
 Practice gauntlet (six games against the depth and node rungs) with the
-100,000-node budget: 3 wins, 3 losses, Elo 1279 on trial-0, deterministic
-across replays. The 80,000-node build scored Elo 1282 on the same trial, so
-the larger budget holds the line while the opening book gets the engine
-out of the opening on sound lines and into the middlegame with its nodes
-intact.
+120,000-node budget: trial-0 3 wins, 1 draw, 2 losses, Elo 1364; trial-1
+6 wins, Elo 2112; mean Elo 1738, deterministic across replays. The
+100,000-node build scored Elo 1279 on trial-0 and 1450 on trial-1, so the
+larger budget and the stronger endgame king lift the engine clear of the
+node rungs it used to lose to.
 
 The readable source is kept beside the entry as `engine.py`; the packed
 `main.py` is what the kit's compressor makes of it, byte for byte. Rebuild
